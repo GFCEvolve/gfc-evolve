@@ -1,145 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GFC Evolve | Claude Code skills and MCP starter packs</title>
-<meta name="description" content="GFC Evolve, South Africa. Digital downloads for Claude Code: a security reviewer skill with an MCP starter pack, and a session briefing hook. 14-day refund.">
+<title>GFC Evolve | Claude skills and MCP tools for developers</title>
+<meta name="description" content="GFC Evolve makes Claude skills and MCP tools for developers. Digital downloads and software: a Claude Code security reviewer with an MCP starter pack, and a session briefing hook.">
+<meta name="color-scheme" content="dark">
 <style>
 :root{
-  --ink:#140b3a; --night:#1a0b4d; --violet:#7c3aed; --purple:#a21caf; --magenta:#e11d74; --pink:#ff5fa8;
-  --orange:#ff7a1a; --sun:#ffd426; --lime:#a3e635; --green:#10b981; --teal:#06b6d4; --mint:#5eead4; --sky:#38bdf8; --blue:#2563eb;
-  --cream:#fffaf0; --white:#fff;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --serif:Georgia,"Iowan Old Style","Palatino Linotype",serif;
-  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --rainbow:linear-gradient(90deg,#ff7a1a,#ffd426,#a3e635,#10b981,#06b6d4,#7c3aed,#e11d74,#ff7a1a);
+  --ink:#0B1020;
+  --ink-2:#10172B;
+  --panel:#141C33;
+  --line:rgba(160,175,220,.16);
+  --text:#E8ECF8;
+  --muted:#A8B2CE;
+  --indigo:#6C74F5;
+  --indigo-soft:#8E95FF;
+  --teal:#2DD4BF;
+  --coral:#FF7F6B;
+  --radius:18px;
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
 }
-*{box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--cream);color:var(--ink);font:1.0625rem/1.65 var(--sans)}
-a{color:var(--magenta);text-underline-offset:3px;font-weight:700}
-a:hover{color:var(--violet)}
-:focus-visible{outline:4px solid var(--sun);outline-offset:3px;border-radius:4px}
-.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:.75rem 1rem;z-index:10}
-.skip:focus{left:0}
-.wrap{max-width:68rem;margin:0 auto;padding:0 1.25rem}
-@keyframes slide{to{background-position:200% 0}}
-@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important}}
+body{
+  margin:0;background:var(--ink);color:var(--text);
+  font-family:var(--font);font-size:1.0625rem;line-height:1.65;
+  overflow-x:hidden;
+}
+a{color:var(--indigo-soft);text-underline-offset:3px}
+a:hover{color:#fff}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:#000;padding:10px 16px;border-radius:8px;z-index:20}
+.skip:focus{left:8px}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
 
-header.top{background:linear-gradient(90deg,#1a0b4d,#4c1d95,#9d174d);position:sticky;top:0;z-index:5}
-header.top::after{content:"";display:block;height:6px;background:var(--rainbow);background-size:200% 100%;animation:slide 6s linear infinite}
-.bar{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;align-items:center;justify-content:space-between;padding:.7rem 0}
-.brand{font:800 1.35rem var(--mono);letter-spacing:.05em;text-decoration:none;color:#fff}
-.brand span{color:var(--sun)}
-nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.35rem}
-nav a{display:inline-block;padding:.55rem .9rem;min-height:44px;color:#fff;font:700 .9rem var(--mono);text-decoration:none;border-radius:999px}
-nav li:nth-child(1) a{background:var(--violet)}
-nav li:nth-child(2) a{background:var(--teal);color:var(--ink)}
-nav li:nth-child(3) a{background:var(--green);color:var(--ink)}
-nav li:nth-child(4) a{background:var(--orange);color:var(--ink)}
-nav li:nth-child(5) a{background:var(--pink);color:var(--ink)}
-nav a:hover{background:var(--sun);color:var(--ink)}
+/* ambient background */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--ink)}
+.bg::after{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 20%,#000 20%,transparent 75%);
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 20%,#000 20%,transparent 75%);
+  opacity:.55;
+}
+.glow{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5;will-change:transform}
+.glow.a{width:620px;height:620px;left:-160px;top:-180px;background:radial-gradient(circle,var(--indigo),transparent 68%);animation:drift 38s ease-in-out infinite alternate}
+.glow.b{width:520px;height:520px;right:-140px;top:120px;background:radial-gradient(circle,var(--teal),transparent 68%);opacity:.28;animation:drift 46s ease-in-out infinite alternate-reverse}
+.glow.c{width:380px;height:380px;left:42%;top:520px;background:radial-gradient(circle,var(--coral),transparent 68%);opacity:.14;animation:drift 52s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(60px,40px,0)}}
 
-.hero{padding:5rem 0 5rem;color:#fff;position:relative;overflow:hidden;
-  background:
-   radial-gradient(circle at 10% 15%,rgba(255,122,26,.85),transparent 35%),
-   radial-gradient(circle at 92% 10%,rgba(6,182,212,.85),transparent 38%),
-   radial-gradient(circle at 75% 100%,rgba(255,95,168,.85),transparent 40%),
-   radial-gradient(circle at 25% 100%,rgba(163,230,53,.6),transparent 35%),
-   linear-gradient(135deg,#3b0a8f,#7c3aed 50%,#e11d74)}
-.blob{position:absolute;border-radius:50%;animation:drift 9s ease-in-out infinite}
-.b1{width:240px;height:240px;right:-60px;top:-70px;background:var(--sun)}
-.b2{width:120px;height:120px;left:6%;bottom:-40px;background:var(--lime);animation-delay:-3s}
-.b3{width:80px;height:80px;right:14%;bottom:12%;background:var(--sky);animation-delay:-6s}
-.hero .wrap{position:relative;z-index:1}
-.strata{height:18px;margin-bottom:2.25rem;border-radius:999px;background:var(--rainbow);background-size:200% 100%;animation:slide 5s linear infinite}
-.kicker{display:inline-block;font:800 .85rem var(--mono);text-transform:uppercase;letter-spacing:.14em;color:var(--ink);background:var(--sun);padding:.4rem .9rem;border-radius:999px;margin:0 0 1.25rem;border:3px solid var(--ink)}
-h1{font:800 clamp(2.5rem,7vw,4.8rem)/1.03 var(--serif);margin:0 0 1.25rem;max-width:16ch}
-h1 em{font-style:normal;background:linear-gradient(90deg,var(--sun),var(--lime),var(--mint));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{font-size:1.3rem;max-width:40rem;margin:0 0 2rem;color:#fff}
-.btn{display:inline-block;background:linear-gradient(135deg,var(--violet),var(--magenta));color:#fff;padding:.85rem 1.6rem;min-height:48px;font:800 1rem var(--mono);text-decoration:none;border:3px solid var(--ink);border-radius:14px;box-shadow:5px 5px 0 var(--ink);transition:transform .12s}
-.btn:hover{color:#fff;transform:translate(-2px,-2px)}
-.btn:active{box-shadow:1px 1px 0 var(--ink);transform:translate(3px,3px)}
-.hero .btn{background:linear-gradient(135deg,var(--sun),var(--orange));color:var(--ink)}
-.hero .btn:hover{color:var(--ink)}
-.btn.btn-disabled{background:#e5e1f5;color:#3d3566;border-color:#6b63a0;box-shadow:none;cursor:not-allowed}
-.btn.ghost{background:var(--teal);color:var(--ink);margin-left:.5rem}
-.btn.ghost:hover{background:var(--mint);color:var(--ink)}
-.note{font:.85rem var(--mono);margin-top:1.25rem;color:#fff}
-section .note{color:#2a2160}
+/* header */
+header.top{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,16,32,.72);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:700;letter-spacing:.01em}
+.brand svg{width:26px;height:26px;flex:none}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:.95rem;transition:color .2s,background .2s}
+nav a:hover{color:#fff;background:rgba(142,149,255,.12)}
+@media (max-width:760px){nav .opt{display:none}}
 
-section{padding:4rem 0;position:relative}
-#products{background:linear-gradient(160deg,#ede9fe,#fce7f3 60%,#ffedd5)}
-#included{background:linear-gradient(160deg,#cffafe,#d9f99d)}
-#faq{background:linear-gradient(160deg,#fef3c7,#fed7aa)}
-#refunds{background:linear-gradient(135deg,#10b981,#06b6d4);color:var(--ink)}
-#contact{background:linear-gradient(135deg,#ff5fa8,#ff7a1a)}
-#terms{background:linear-gradient(160deg,#ddd6fe,#bae6fd)}
-#privacy{background:linear-gradient(160deg,#fbcfe8,#fde68a)}
-h2{font:800 clamp(1.8rem,4vw,2.6rem)/1.15 var(--serif);margin:0 0 1.5rem}
-h2::before{content:"// ";font-family:var(--mono);color:var(--magenta)}
-#refunds h2::before,#contact h2::before{color:var(--ink)}
-#refunds a,#contact a{color:var(--ink)}
-h3{font:700 1.3rem/1.25 var(--serif);margin:0 0 .5rem}
+/* hero */
+.hero{padding:clamp(72px,12vw,150px) 0 clamp(64px,9vw,110px);position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin:0 0 26px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--teal)}
+h1{font-size:clamp(2.5rem,7.4vw,5.4rem);line-height:1.02;letter-spacing:-.035em;margin:0 0 26px;max-width:15ch;font-weight:750}
+h1 .grad{background:linear-gradient(100deg,var(--indigo-soft),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(1.1rem,2.2vw,1.35rem);color:var(--muted);max-width:56ch;margin:0 0 38px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;font:inherit;font-weight:650;text-decoration:none;border:1px solid transparent;transition:transform .2s,background .2s,border-color .2s}
+.btn.primary{background:linear-gradient(135deg,var(--indigo),#5560E8);color:#fff}
+.btn.primary:hover{transform:translateY(-2px);color:#fff;background:linear-gradient(135deg,#7C84FF,#5F6AF0)}
+.btn.ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.03)}
+.btn.ghost:hover{border-color:var(--indigo-soft);color:#fff;background:rgba(142,149,255,.1)}
+.shapes{position:absolute;right:0;top:40px;width:min(44vw,460px);aspect-ratio:1;pointer-events:none;opacity:.9}
+@media (max-width:900px){.shapes{display:none}}
 
-.grid{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr))}
-.card{background:var(--white);border:3px solid var(--ink);border-radius:18px;overflow:hidden;padding:0 1.5rem 1.5rem;display:flex;flex-direction:column;box-shadow:9px 9px 0 var(--violet)}
-.card::before{content:"";display:block;height:18px;margin:0 -1.5rem 1.25rem;background:var(--rainbow)}
-.card:nth-child(2){box-shadow:9px 9px 0 var(--orange)}
-.tag{display:inline-block;align-self:flex-start;font:800 .75rem var(--mono);text-transform:uppercase;letter-spacing:.1em;color:#fff;background:var(--blue);padding:.3rem .7rem;border-radius:999px;margin:0 0 .75rem}
-.card:nth-child(2) .tag{background:var(--magenta)}
-.price{font:800 2.2rem var(--mono);margin:.5rem 0 1rem;color:var(--magenta)}
-.price small{font-size:.9rem;font-weight:400;color:var(--ink)}
-.card ul{padding-left:1.1rem;margin:0 0 1.25rem}
-.card li::marker{color:var(--orange)}
-.card .btn{margin-top:auto;align-self:flex-start}
+/* sections */
+section{padding:clamp(56px,8vw,104px) 0}
+.kicker{font-family:var(--mono);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--coral);margin:0 0 14px}
+h2{font-size:clamp(1.85rem,4.2vw,3rem);line-height:1.1;letter-spacing:-.025em;margin:0 0 18px;font-weight:720}
+.sub{color:var(--muted);max-width:60ch;margin:0 0 44px}
+h3{font-size:1.3rem;line-height:1.25;margin:0 0 10px;letter-spacing:-.01em}
 
-.list{list-style:none;padding:0;margin:0;display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))}
-.list li{border:3px solid var(--ink);border-radius:16px;padding:1.1rem 1.2rem;box-shadow:5px 5px 0 var(--ink);color:var(--ink)}
-.list li:nth-child(1){background:var(--sun)}
-.list li:nth-child(2){background:var(--pink)}
-.list li:nth-child(3){background:var(--mint)}
-.list li:nth-child(4){background:var(--sky)}
-.list strong{display:block;font-family:var(--serif);font-size:1.2rem;margin-bottom:.15rem}
+/* products */
+.grid{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.card{position:relative;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(20,28,51,.92),rgba(16,23,43,.92));border:1px solid var(--line);border-radius:var(--radius);padding:32px;overflow:hidden;transition:border-color .25s,transform .25s}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:1px;background:linear-gradient(90deg,transparent,var(--indigo-soft),transparent);opacity:.7}
+.card:hover{border-color:rgba(142,149,255,.5);transform:translateY(-3px)}
+.tag{align-self:flex-start;font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(45,212,191,.35);border-radius:999px;padding:4px 12px;margin-bottom:18px}
+.card p{color:var(--muted);margin:0 0 22px}
+.price{display:flex;align-items:baseline;gap:10px;margin-top:auto;margin-bottom:20px}
+.price strong{font-size:2.5rem;letter-spacing:-.03em;line-height:1}
+.price span{color:var(--muted);font-size:.95rem}
+button.btn:disabled{width:100%;background:rgba(255,255,255,.05);border:1px dashed rgba(168,178,206,.45);color:#C4CCE2;cursor:not-allowed}
 
-details{border:3px solid var(--ink);border-radius:14px;background:#fff;margin-bottom:.8rem;overflow:hidden}
-details:nth-of-type(1){border-left:14px solid var(--violet)}
-details:nth-of-type(2){border-left:14px solid var(--orange)}
-details:nth-of-type(3){border-left:14px solid var(--green)}
-details:nth-of-type(4){border-left:14px solid var(--magenta)}
-details:nth-of-type(5){border-left:14px solid var(--teal)}
-summary{cursor:pointer;padding:.9rem 1rem;min-height:48px;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+/* what you get */
+.feat{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));list-style:none;margin:0;padding:0}
+.feat li{border-top:1px solid var(--line);padding:22px 4px 0}
+.feat .n{font-family:var(--mono);font-size:.85rem;color:var(--indigo-soft);display:block;margin-bottom:10px}
+.feat h3{font-size:1.1rem}
+.feat p{margin:0;color:var(--muted);font-size:1rem}
+
+/* faq */
+.faq{max-width:780px}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:56px;padding:14px 0;font-weight:600;font-size:1.08rem}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font:800 1.3rem var(--mono);color:var(--magenta)}
-details[open] summary::after{content:"\2212"}
-details[open] summary{background:var(--sun)}
-details p{margin:0;padding:.75rem 1rem 1rem}
+summary::after{content:"+";font-family:var(--mono);color:var(--teal);font-size:1.4rem;line-height:1;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0 0 20px;color:var(--muted);max-width:62ch}
 
-.legal{max-width:44rem}
-.legal h3{margin-top:1.5rem;color:var(--purple)}
-#refunds .legal h3,#contact .legal h3{color:var(--ink)}
-footer{background:linear-gradient(90deg,#1a0b4d,#4c1d95,#9d174d);color:#fff;padding:2.5rem 0}
-footer::before{content:"";display:block;height:8px;margin-bottom:2rem;background:var(--rainbow);background-size:200% 100%;animation:slide 6s linear infinite}
-footer a{color:var(--sun)}
-footer a:hover{color:var(--mint)}
-.foot{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
-@media (max-width:30rem){.btn.ghost{margin:.75rem 0 0}.btn{width:100%;text-align:center}.card .btn{align-self:stretch}}
+/* split panels */
+.panel{background:linear-gradient(135deg,rgba(108,116,245,.14),rgba(45,212,191,.07));border:1px solid var(--line);border-radius:24px;padding:clamp(28px,5vw,56px)}
+.panel p{color:var(--muted);max-width:62ch;margin:0 0 14px}
+.panel p:last-child{margin-bottom:0}
+.mail{display:inline-block;font-size:clamp(1.15rem,3.4vw,1.8rem);font-weight:650;letter-spacing:-.01em;word-break:break-word;margin-top:6px}
+
+/* legal */
+.legal{display:grid;gap:22px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.legal article{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:rgba(16,23,43,.6)}
+.legal ul{margin:0;padding-left:1.2em;color:var(--muted)}
+.legal li{margin-bottom:8px}
+.legal p{color:var(--muted);margin:0 0 12px}
+
+footer{border-top:1px solid var(--line);padding:36px 0 52px;color:var(--muted);font-size:.95rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="bg" aria-hidden="true"><div class="glow a"></div><div class="glow b"></div><div class="glow c"></div></div>
 
 <header class="top">
   <div class="wrap bar">
-    <a class="brand" href="#top">GFC<span>/</span>EVOLVE</a>
-    <nav aria-label="Main">
+    <a class="brand" href="#top" aria-label="GFC Evolve home">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="8" stroke="#8E95FF" stroke-width="1.5"/><path d="M9 21 16 9l7 12" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="22" r="2" fill="#FF7F6B"/></svg>
+      GFC Evolve
+    </a>
+    <nav aria-label="Primary">
       <ul>
         <li><a href="#products">Products</a></li>
-        <li><a href="#included">What you get</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#refunds">Refunds</a></li>
+        <li class="opt"><a href="#get">What you get</a></li>
+        <li class="opt"><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -148,123 +159,145 @@ footer a:hover{color:var(--mint)}
 
 <main id="main">
   <div class="hero" id="top">
-    <span class="blob b1" aria-hidden="true"></span>
-    <span class="blob b2" aria-hidden="true"></span>
-    <span class="blob b3" aria-hidden="true"></span>
     <div class="wrap">
-      <div class="strata" aria-hidden="true"></div>
-      <p class="kicker">Digital downloads from South Africa</p>
-      <h1>Ready-made skills for <em>Claude Code.</em></h1>
-      <p class="lead">GFC Evolve sells software you download and run yourself: Claude Code skills and MCP starter packs. Buy once, unzip, drop into your project.</p>
-      <a class="btn" href="#products">See the downloads</a>
-      <a class="btn ghost" href="#included">What is in the zip</a>
-      <p class="note">Software products only. Delivered as a file download after purchase.</p>
+      <svg class="shapes" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <circle cx="200" cy="200" r="150" stroke="#8E95FF" stroke-opacity=".35"/>
+        <circle cx="200" cy="200" r="100" stroke="#2DD4BF" stroke-opacity=".3"/>
+        <path d="M200 50 350 200 200 350 50 200Z" stroke="#8E95FF" stroke-opacity=".28"/>
+        <path d="M0 330 400 70" stroke="#2DD4BF" stroke-opacity=".25"/>
+        <circle cx="350" cy="200" r="5" fill="#FF7F6B"/>
+        <circle cx="200" cy="50" r="3" fill="#2DD4BF"/>
+        <circle cx="50" cy="200" r="3" fill="#8E95FF"/>
+      </svg>
+      <p class="eyebrow">Digital downloads for developers</p>
+      <h1>Claude skills and MCP tools, <span class="grad">built to ship.</span></h1>
+      <p class="lead">GFC Evolve makes focused software for developers who work with Claude: skills, hooks and MCP tools you download once and run in your own environment.</p>
+      <div class="cta">
+        <a class="btn primary" href="#products">See the products</a>
+        <a class="btn ghost" href="#faq">Read the FAQ</a>
+      </div>
     </div>
   </div>
 
   <section id="products" aria-labelledby="products-h">
     <div class="wrap">
-      <h2 id="products-h">Products</h2>
+      <p class="kicker">Products</p>
+      <h2 id="products-h">Two tools, one clear job each.</h2>
+      <p class="sub">Both are digital downloads and software. Neither is a service or consulting engagement.</p>
       <div class="grid">
         <article class="card">
-          <p class="tag">Digital download &middot; Software</p>
+          <span class="tag">Digital download</span>
           <h3>Claude Code Security Reviewer + MCP Starter Pack</h3>
-          <p>A Claude Code skill that guides a security-focused review of your code, bundled with a starter pack of MCP server configuration to get you connected faster.</p>
-          <ul>
-            <li>Security reviewer skill files</li>
-            <li>MCP starter pack with setup notes</li>
-            <li>Delivered as a downloadable archive</li>
-          </ul>
-          <p class="price">$19 <small>USD, one-time</small></p>
-          <span class="btn btn-disabled" aria-disabled="true">Coming soon</span>
+          <p>A Claude Code security review skill paired with a starter pack for building and wiring up your own MCP tools. Software you install and run locally.</p>
+          <div class="price"><strong>$19</strong><span>one-time, digital download</span></div>
+          <button class="btn" type="button" disabled>Coming soon</button>
         </article>
         <article class="card">
-          <p class="tag">Digital download &middot; Software</p>
+          <span class="tag">Digital download</span>
           <h3>Session Briefing Hook</h3>
-          <p>A Claude Code hook script that prepares a short briefing at the start of each session, so context is waiting when you open your project.</p>
-          <ul>
-            <li>Hook script and install notes</li>
-            <li>Delivered as a downloadable archive</li>
-          </ul>
-          <p class="price">$9 <small>USD, one-time</small></p>
-          <a class="btn" href="#contact">Ask to be told at launch</a>
+          <p>A Claude Code hook that briefs each new session on where you left off, so you spend less time re-explaining your project. Software you install and run locally.</p>
+          <div class="price"><strong>$9</strong><span>one-time, digital download</span></div>
+          <button class="btn" type="button" disabled>Coming soon</button>
         </article>
       </div>
     </div>
   </section>
 
-  <section id="included" aria-labelledby="inc-h">
+  <section id="get" aria-labelledby="get-h">
     <div class="wrap">
-      <h2 id="inc-h">What you get</h2>
-      <ul class="list">
-        <li><strong>A file download</strong>Files you keep and run on your own machine.</li>
-        <li><strong>Plain, readable files</strong>Skill and config files you can open, read and edit.</li>
-        <li><strong>Setup notes</strong>A short readme with install steps for each product.</li>
-        <li><strong>No account needed to use it</strong>Nothing to log in to once it is downloaded.</li>
+      <p class="kicker">What you get</p>
+      <h2 id="get-h">Software you own and can read.</h2>
+      <p class="sub">Every product is delivered as files you keep. No account, no subscription, nothing hosted by us.</p>
+      <ul class="feat">
+        <li><span class="n">01</span><h3>A digital download</h3><p>The product files, packaged for download after checkout.</p></li>
+        <li><span class="n">02</span><h3>Readable source</h3><p>Plain files you can inspect, adapt and fit to your own workflow.</p></li>
+        <li><span class="n">03</span><h3>Setup notes</h3><p>Short instructions for installing and using each product with Claude.</p></li>
+        <li><span class="n">04</span><h3>Runs on your machine</h3><p>Everything runs locally in your environment. We never see your code.</p></li>
       </ul>
-      <p class="note">Exact file lists will be confirmed on each product page before launch.</p>
     </div>
   </section>
 
   <section id="faq" aria-labelledby="faq-h">
-    <div class="wrap legal">
-      <h2 id="faq-h">FAQ</h2>
-      <details><summary>What exactly am I buying?</summary><p>A software download: skill files, scripts and configuration for Claude Code. It is a product you install yourself.</p></details>
-      <details><summary>Is this a service or consulting?</summary><p>No. GFC Evolve sells downloadable software only. There is no consulting or done-for-you work.</p></details>
-      <details><summary>Do I need Claude Code already?</summary><p>Yes. These files are built for Claude Code and are not a replacement for it.</p></details>
-      <details><summary>How do I receive it?</summary><p>A download link is provided after checkout.</p></details>
-      <details><summary>Where is GFC Evolve based?</summary><p>South Africa.</p></details>
+    <div class="wrap">
+      <p class="kicker">FAQ</p>
+      <h2 id="faq-h">Questions, answered.</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I receive my purchase?</summary>
+          <p>A download link is provided after checkout.</p>
+        </details>
+        <details>
+          <summary>Are these services?</summary>
+          <p>No. Both products are digital downloads and software. There is no consulting or ongoing service attached.</p>
+        </details>
+        <details>
+          <summary>When can I buy?</summary>
+          <p>Both products are marked Coming soon. Purchase buttons will be enabled when they are ready to download.</p>
+        </details>
+        <details>
+          <summary>What do you need from me?</summary>
+          <p>Only the email address required to deliver your download.</p>
+        </details>
+        <details>
+          <summary>Can I get a refund?</summary>
+          <p>Yes. Full refund within 14 days, no reason needed. See the Refunds section below.</p>
+        </details>
+      </div>
     </div>
   </section>
 
-  <section id="refunds" aria-labelledby="ref-h">
-    <div class="wrap legal">
-      <h2 id="ref-h">Refund policy</h2>
-      <p>All GFC Evolve digital downloads come with a 14-day refund. If you ask for a refund within 14 days of purchase, you get a full refund. No reason is needed.</p>
-      <p>To request one, email <a href="mailto:gfcevolve@gmail.com?subject=Refund%20request">gfcevolve@gmail.com</a> from the address you used to buy, with your order details.</p>
+  <section id="refunds" aria-labelledby="refunds-h">
+    <div class="wrap">
+      <div class="panel">
+        <p class="kicker">Refunds</p>
+        <h2 id="refunds-h">14 days, no reason needed.</h2>
+        <p>If a product is not right for you, ask for a full refund within 14 days of purchase. You do not have to explain why. Email us at the address in the Contact section and we will process it.</p>
+      </div>
     </div>
   </section>
 
-  <section id="contact" aria-labelledby="con-h">
-    <div class="wrap legal">
-      <h2 id="con-h">Contact</h2>
-      <p>Questions about a download? Email <a href="mailto:gfcevolve@gmail.com">gfcevolve@gmail.com</a>.</p>
+  <section id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <p class="kicker">Contact</p>
+      <h2 id="contact-h">Talk to a person.</h2>
+      <p class="sub">Questions, refund requests or delivery problems: write to us.</p>
+      <a class="mail" href="mailto:gfcevolve@gmail.com">gfcevolve@gmail.com</a>
     </div>
   </section>
 
-  <section id="terms" aria-labelledby="terms-h">
-    <div class="wrap legal">
-      <h2 id="terms-h">Terms</h2>
-      <h3>What you are buying</h3>
-      <p>A licence to use a downloadable software product from GFC Evolve. You own your copy of the files for your own use. Refunds are covered by the 14-day policy above.</p>
-      <h3>Use</h3>
-      <p>Use it in your own projects. Please do not resell or redistribute the files.</p>
-      <h3>No guarantees</h3>
-      <p>Software is provided as is. Review any code or configuration before running it, and test it in your own environment.</p>
-      <h3>Changes</h3>
-      <p>These terms may be updated. The version on this page is the current one.</p>
-    </div>
-  </section>
-
-  <section id="privacy" aria-labelledby="priv-h">
-    <div class="wrap legal">
-      <h2 id="priv-h">Privacy</h2>
-      <h3>What we collect</h3>
-      <p>This site sets no cookies and uses no trackers. When you buy, the payment provider collects your order details and shares what is needed to deliver your download, such as your email address.</p>
-      <h3>How we use it</h3>
-      <p>To deliver your purchase and reply to your messages. We do not sell personal information.</p>
-      <h3>Your rights</h3>
-      <p>Ask us at <a href="mailto:gfcevolve@gmail.com">gfcevolve@gmail.com</a> to see or delete the information we hold about you.</p>
+  <section id="legal" aria-labelledby="legal-h">
+    <div class="wrap">
+      <p class="kicker">Legal</p>
+      <h2 id="legal-h">Terms and Privacy.</h2>
+      <div class="legal">
+        <article id="terms" aria-labelledby="terms-h">
+          <h3 id="terms-h">Terms</h3>
+          <ul>
+            <li>GFC Evolve sells digital downloads and software. We do not sell services or consulting.</li>
+            <li>A purchase gives you a licence to use the software for your own work. Please do not resell or redistribute the files.</li>
+            <li>Refunds: full refund within 14 days of purchase, no reason needed.</li>
+            <li>Software is provided as is. You are responsible for reviewing it and testing it in your own environment before relying on it.</li>
+            <li>Questions about these terms: gfcevolve@gmail.com.</li>
+          </ul>
+        </article>
+        <article id="privacy" aria-labelledby="privacy-h">
+          <h3 id="privacy-h">Privacy</h3>
+          <p>This site uses no cookies and no trackers.</p>
+          <ul>
+            <li>The only personal information we need is your email address, used to deliver your download and to answer your messages.</li>
+            <li>We do not sell or share your email address.</li>
+            <li>To have your email address deleted, write to gfcevolve@gmail.com.</li>
+          </ul>
+        </article>
+      </div>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap foot">
-    <p style="margin:0"><strong>GFC Evolve, South Africa</strong> &middot; <a href="mailto:gfcevolve@gmail.com">gfcevolve@gmail.com</a></p>
-    <nav aria-label="Footer">
-      <a href="#terms">Terms</a> &nbsp;&middot;&nbsp; <a href="#privacy">Privacy</a> &nbsp;&middot;&nbsp; <a href="#refunds">Refunds</a> &nbsp;&middot;&nbsp; <a href="#contact">Contact</a>
-    </nav>
+    <span>&copy; GFC Evolve</span>
+    <span>Claude skills and MCP tools for developers. Digital downloads and software.</span>
   </div>
 </footer>
 </body>
